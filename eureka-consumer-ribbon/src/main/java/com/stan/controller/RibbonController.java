@@ -22,9 +22,9 @@ public class RibbonController {
 
         //1:通过RestTemplate 获取调用服务返回的
         //* 参数
-        //         *  1:添加注册到Eureka的微服务名称  不要填写ip地址 这不符合负载均衡 某些版本下也无法找到该服务
+        //         *  1:添加注册到Eureka的微服务名称  不要填写ip地址:http://localhost:8081/provider/test 这不符合负载均衡 开启负载均衡后 ip地址写法失效
         //         *  2:返回类型
-        String forObject = restTemplate.getForObject("http://EUREKA-PROVIDER:8081/provider/test", String.class);
+        String forObject = restTemplate.getForObject("http://EUREKA-PROVIDER/provider/test", String.class);
         System.out.println(restTemplate.getUriTemplateHandler());
         System.out.println(forObject);
         return "调用服务端口"+forObject;

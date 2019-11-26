@@ -24,13 +24,13 @@ public class EurekaConsumerRibbonApplication {
      * 且具备启负载均衡能力
      */
     @Bean
-    @LoadBalanced
+    @LoadBalanced  //开启负载均衡
     public RestTemplate  restTemplate(){
       return   new RestTemplate();
     }
 
     /**
-     * 设置负载均衡方式
+     * 设置负载均衡策略
      * Ribbon 默认的
      */
     @Bean
