@@ -19,7 +19,7 @@ public interface IProviderService {
     @RequestMapping("test/{id}")
     //如果里面有参数 也要一致
     // 请求中存在 REST风格 参数列表中必须给对应的参数添加 @PathVariable("一定要添加请求中对应参数的名字")
-    public String test(@PathVariable("id")Integer id);
+    public String test(@PathVariable()Integer id);
 
 
 }
