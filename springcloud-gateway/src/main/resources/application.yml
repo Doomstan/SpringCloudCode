@@ -1,0 +1,39 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: eureka-gateway
+  cloud:
+    gateway:
+      #配置网关的路由规则
+      routes:
+        # 路由的唯一标识
+        - id: feign-conumser
+          #微服务的名称
+          uri: lb://FEIGN-CONSUMER
+          #配置路由规则 映射的路径
+          predicates:
+            - Path=/feignTest/**
+          filters:
+          #截取前缀
+            - StripPrefix=1
+            #配置限流器过滤器
+            - name: RequestRateLimiter
+              args:
+                #限流匹配  #{@myKeyResolver} 自己要注入到Bean中  name = myKeyResolver
+                key-resolver: "#{@myKeyResolver}"
+                #每秒令牌中放入令牌的数量 replenishRate
+                redis-rate-limiter.replenishRate: 1
+                #令牌最大容量       burstCapacity
+                redis-rate-limiter.burstCapacity: 1
+
+
+  redis:
+    host: 139.9.53.186
+    password: root
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka

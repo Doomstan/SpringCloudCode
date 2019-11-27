@@ -1,0 +1,21 @@
+配置文件中：
+  cloud:
+    gateway:
+      #配置网关的路由规则
+      routes:
+        # 路由的唯一标识
+        - id: feign-conumser
+          #微服务的名称
+          uri: lb://FEIGN-CONSUMER
+          #配置路由规则
+          predicates:
+            - Path=/feignTest/**
+          #截取前缀
+          filters:
+            - StripPrefix=1
+
+ uri:代表要转发到哪个服务中,绑定Eureka上的某个服务.
+ 配置路由规则 predicates:- Path=/feignTest/**  路由器的地址： http://localhost:8888/feignTest/feign/test2
+ 截取前缀- StripPrefix=1 :表示将
+    路由器地址中：  http://localhost:8888/feignTest/feign/test2  的 localhost:8888 改变为 微服务的名称 FEIGN-CONSUMER
+    最后变成：http://FEIGN-CONSUMER/feign/test2 负载均衡 帮客户端转发。
