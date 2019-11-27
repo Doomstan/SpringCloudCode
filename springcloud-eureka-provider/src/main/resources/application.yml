@@ -1,12 +1,12 @@
 server:
-  port: 8081
+  port: 8082
 
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8080/eureka
 
-#提供者微服务名称
+#鏈嶅姟鍚嶇О
 spring:
   application:
     name: eureka-provider

@@ -20,6 +20,8 @@ public class provider {
     private String  port;
     @RequestMapping("test/{id}")
     public String test(@PathVariable("id") Integer id){
+        System.out.println("provider.test");
+        System.out.println(id);
         return port;
     }
 

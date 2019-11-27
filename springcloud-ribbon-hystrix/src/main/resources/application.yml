@@ -1,5 +1,6 @@
 server:
-  port: 8084
+  port: 8086
+
 eureka:
   client:
     service-url:
@@ -7,8 +8,4 @@ eureka:
 
 spring:
   application:
-    name: feign-consumer
-
-feign:
-  hystrix:
-    enabled: true
+    name: ribbon-hystrix

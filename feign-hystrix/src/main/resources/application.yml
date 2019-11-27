@@ -1,0 +1,24 @@
+server:
+  port: 8089
+spring:
+  application:
+    name: fegin-Hystrix
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8080/eureka
+feign:
+  hystrix:
+    enabled: true #开启豪猪断路器
+
+
+  #是否开启熔断器
+hystrix:
+  command:
+    default:
+      circuitBreaker:
+        enabled: true
+        requestVolumeThreshold: 2
+        sleepWindowInMilliseconds: 2000
+
+

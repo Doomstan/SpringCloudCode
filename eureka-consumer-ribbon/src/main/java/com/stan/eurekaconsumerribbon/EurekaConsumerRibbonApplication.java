@@ -30,8 +30,8 @@ public class EurekaConsumerRibbonApplication {
     }
 
     /**
-     * 设置负载均衡策略
-     * Ribbon 默认的
+     * 设置负载均衡策略 -- 随机
+     * Ribbon
      */
     @Bean
     public IRule rule(){

@@ -1,14 +1,11 @@
 
-server:
-  port: 8080
-
-#����Eureka
 eureka:
   client:
     service-url:
-     defaultZone: http://localhost:8080/eureka
-
-#΢��������
+     defaultZone: http://localhost:8080/eureka/   #eureka注册中心地址，这个地址不要驼峰
+    register-with-eureka: false  #是否将该应用添加到eureka  关闭eureka自动注册服务，默认为true，如果不设置会把当前应用注册上去
+    fetch-registry: false       #禁止当前微服务调用其他微服务
+#配置微服务名称
 spring:
   application:
     name: eureka-service

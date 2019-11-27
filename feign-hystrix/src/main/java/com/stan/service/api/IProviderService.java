@@ -1,5 +1,6 @@
 package com.stan.service.api;
 
+import com.stan.service.api.impl.IProviderServiceImpl;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,14 +13,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * 接口中写 提供者者的方法
  */
 
-@FeignClient(value = "EUREKA-PROVIDER")//调用的微服务名称
-@RequestMapping("provider") //跟服务提供者对应controller一致
+@FeignClient(value = "EUREKA-PROVIDER",fallback = IProviderServiceImpl.class)//调用的微服务名称
 public interface IProviderService {
 
-    @RequestMapping("test/{id}")
+    @RequestMapping("/provider/test/{id}")
     //如果里面有参数 也要一致
     // 请求中存在 REST风格 参数列表中必须给对应的参数添加 @PathVariable("一定要添加请求中对应参数的名字")
-    public String test(@PathVariable("id")Integer id);
+    public String test(@PathVariable("id") Integer id);
 
 
 }
