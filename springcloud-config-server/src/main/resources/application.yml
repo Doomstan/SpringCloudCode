@@ -1,0 +1,13 @@
+server:
+  port: 9999
+
+#配置管理的配置文件的存储地址  以便对应的服务可以获取
+#native:表示本地  git:表示将配置文件上传到 git上 也可以是svn
+spring:
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/config
+  profiles:
+    active: native  #表示本地存储

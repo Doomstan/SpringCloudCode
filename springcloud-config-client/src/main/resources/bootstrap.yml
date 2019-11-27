@@ -1,0 +1,11 @@
+spring:
+  cloud:
+    config:
+      uri: http://localhost:9999
+      name: application  #文件名称 application-test.yml  中的 application
+      profile: test     #文件明后缀    # application-test.yml 中的 test
+management:
+  endpoints:
+    web:
+      exposure:
+        include: ["*"]
