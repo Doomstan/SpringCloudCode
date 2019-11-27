@@ -17,8 +17,8 @@ hystrix:
   command:
     default:
       circuitBreaker:
-        enabled: true
-        requestVolumeThreshold: 2
-        sleepWindowInMilliseconds: 2000
+        enabled: true #是否开启熔断器
+        requestVolumeThreshold: 2  #访问服务失败的次数，如果超过这个值熔断器就会打开，默认值20
+        sleepWindowInMilliseconds: 2000 #指定时间内进入半开状态
 
 
